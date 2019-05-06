@@ -5,6 +5,10 @@ public class HumanPlayer extends Player {
         super(row, col, board);
     }
 
+    public void moveStop(){
+        move(0, 0);
+    }
+
     public void moveUp() {
         if (row > 0 && !board.isWall(row - 1, col)) {
             move(-1, 0);
@@ -27,5 +31,13 @@ public class HumanPlayer extends Player {
         if (col > 0 && !board.isWall(row, col - 1)) {
             move(0, -1);
         }
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
     }
 }

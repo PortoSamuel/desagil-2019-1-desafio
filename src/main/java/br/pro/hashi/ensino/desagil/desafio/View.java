@@ -75,6 +75,16 @@ public class View extends JPanel {
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
         getToolkit().sync();
+
+        if (model.getWinner() != null){
+            if(model.getWinner() == model.getHumanPlayer()){
+                g.setColor(Color.BLACK);
+                g.drawString("Human Player Venceu", 20,20);
+            }else{
+                g.setColor(Color.BLACK);
+                g.drawString("CPU Player Venceu", 20,20);
+            }
+        }
     }
 
 

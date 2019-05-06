@@ -12,6 +12,7 @@ public class CpuPlayer extends Player {
     private final boolean[][] visited;
     private final int numRows;
     private final int numCols;
+    private boolean winner;
 
     // Por outro lado, o conceito de nó também existe no caso do tabuleiro porque
     // precisamos de algum tipo de objeto para ser guardado na pilha. Veja no final
@@ -27,6 +28,8 @@ public class CpuPlayer extends Player {
 
         numRows = board.getNumRows();
         numCols = board.getNumCols();
+
+        this.winner = false;
 
         visited = new boolean[numRows][numCols];
 
@@ -49,7 +52,7 @@ public class CpuPlayer extends Player {
 
     // O corpo do loop implícito mencionado acima é este método.
     public void move() {
-        if (!stack.isEmpty()) {
+        if (!stack.isEmpty() && !winner) {
 
             // Na árvore, precisávamos dar um peek na pilha para descobrir a
             // localização atual. Aqui não precisamos fazer isso, pois já
@@ -81,6 +84,10 @@ public class CpuPlayer extends Player {
                 }
             }
         }
+    }
+
+    public void setWinner(boolean set){
+        this.winner = set;
     }
 
     private void save() {
